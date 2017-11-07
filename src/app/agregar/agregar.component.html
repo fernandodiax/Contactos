@@ -1,0 +1,42 @@
+<mat-card *ngIf="mostrar">
+    <mat-card-title>
+      Agregar del Contacto
+    </mat-card-title>
+    <mat-card-content>
+        
+      <form validate [formGroup]="form" (ngSubmit)="onGuardar()">
+        <mat-form-field>
+            <input type="text"  matInput placeholder="Nombre"  formControlName="nombre">
+            <mat-error>
+              {{ validationMessages.nombre.required }}
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input type="text" matInput placeholder="Apellidos" formControlName="apellidos">        
+          <mat-error>
+              {{ validationMessages.apellidos.required }}
+          </mat-error>
+        </mat-form-field>   
+        <mat-form-field>
+          <input type="text"  matInput placeholder="Dirección" formControlName="direccion">
+          <mat-error>
+              {{ validationMessages.direccion.required }}
+          </mat-error>
+        </mat-form-field>   
+        <mat-form-field>
+            <input type="text"  matInput placeholder="Teléfono" formControlName="telefono">
+        </mat-form-field>
+        <mat-form-field>
+            <input type="text" matInput placeholder="Email" formControlName="email">
+        </mat-form-field>
+        <mat-form-field>
+            <input type="text" matInput placeholder="Empresa" formControlName="empresa">
+        </mat-form-field>    
+        <div>
+            <button type="submit" mat-button color="primary" [disabled]="!form.valid">Guardar</button>
+            <button type="button" mat-button  color="warn"(click)="onCancelar()">Cancelar</button>    
+        </div>
+      </form>
+    
+    </mat-card-content>
+  </mat-card>

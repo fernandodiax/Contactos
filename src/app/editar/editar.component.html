@@ -1,0 +1,33 @@
+<mat-card *ngIf="contactoOriginal">
+  <mat-card-title>
+    Edición del Contacto
+  </mat-card-title>
+  <mat-card-content>
+      
+    <form novalidate [formGroup]="form" (ngSubmit)="onGuardar()">
+      <mat-form-field>
+          <input type="text"  matInput placeholder="Nombre"  formControlName="nombre">
+      </mat-form-field>
+      <mat-form-field>
+        <input type="text" matInput placeholder="Apellidos" formControlName="apellidos">        
+      </mat-form-field>   
+      <mat-form-field>
+        <input type="text"  matInput placeholder="Dirección" formControlName="direccion">
+      </mat-form-field>   
+      <mat-form-field>
+          <input type="text"  matInput placeholder="Teléfono" formControlName="telefono">
+      </mat-form-field>
+      <mat-form-field>
+          <input type="text" matInput placeholder="Email" formControlName="email">
+      </mat-form-field>
+      <mat-form-field>
+          <input type="text" matInput placeholder="Empresa" formControlName="empresa">
+      </mat-form-field>    
+      <div>
+          <button type="submit" mat-button color="primary">Guardar</button>
+          <button type="button" mat-button  color="warn"(click)="onCancelar()">Cancelar</button>    
+      </div>
+    </form>
+  
+  </mat-card-content>
+</mat-card>

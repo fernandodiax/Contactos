@@ -1,0 +1,40 @@
+<mat-toolbar color="primary">
+  <span>MIS CONTACTOS</span>
+  <span class="fill-remaining-space"></span>
+  <span>FIREBASE</span>
+</mat-toolbar>
+
+<mat-form-field>
+    <mat-select placeholder="Ciudad" (change)="onSelect($event)">
+      <mat-option *ngFor="let ciudad of ciudades" [value]="ciudad">
+        {{ ciudad }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+<mat-card>
+  <table class="table table-striped table-hover table-responsive-md">
+    <thead class="thead-dark">
+      <tr>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+        <th>Telefono</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let contacto of contactos|async">
+        <td>{{ contacto.nombre }}</td>
+        <td>{{ contacto.apellidos }}</td>
+        <td>{{ contacto.telefono }}</td>
+        <td><button mat-button color="primary" (click)="onClick(contacto)">Detalle</button></td>
+        <td><button mat-button (click)="onEditar(contacto)" color="accent">Editar</button></td>
+        <td><button mat-button (click)="onEliminar(contacto)" color="warn">Eliminar</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-primary" (click)="onAgregar()">Agregar</button>
+</mat-card>
+<app-detalles [contacto]="contacto" (cerrar)="cerrarDetalle()"></app-detalles>
+<app-editar [contacto]="contactoEditar" (cerrar)="cerrarEdicion()">
+</app-editar>
+<app-agregar [mostrar]="contactoAgregar" (cerrar)="contactoAgregar=false"></app-agregar>
